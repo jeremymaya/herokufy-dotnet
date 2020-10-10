@@ -10,7 +10,7 @@ WORKDIR /src
 # COPY ["Herokufy/Herokufy.csproj", "Herokufy/"]
 COPY ["Herokufy.csproj", "./"]
 # RUN dotnet restore "Herokufy/Herokufy.csproj"
-RUN dotnet restore "./DotNetPostgresDocker.csproj"
+RUN dotnet restore "./Herokufy.csproj"
 COPY . .
 # WORKDIR "/src/Herokufy"
 WORKDIR "/src/."
