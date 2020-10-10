@@ -1,0 +1,28 @@
+# Source: https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
+# Source: https://codeburst.io/deploy-a-containerized-asp-net-core-app-to-heroku-using-github-actions-9e54c72db943
+
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to Heroku Container registry
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login
+    - name: Build and push
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      # Changes the directory to where Dockerfile is located before running Heroku CLI commands
+      run: |
+        cd ./Herokufy/Herokufy
+        heroku container:push web -a ${{ secrets.HEROKU_APP_NAME }}
+    - name: Release
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
