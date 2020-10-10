@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Herokufy", "Herokufy\Herokufy.csproj", "{92272A52-6067-4BF1-B9B6-3F9B6E196838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Herokufy", "Herokufy\Herokufy.csproj", "{92272A52-6067-4BF1-B9B6-3F9B6E196838}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{37577B68-7209-4218-865E-8A50F0094413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{92272A52-6067-4BF1-B9B6-3F9B6E196838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92272A52-6067-4BF1-B9B6-3F9B6E196838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92272A52-6067-4BF1-B9B6-3F9B6E196838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37577B68-7209-4218-865E-8A50F0094413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37577B68-7209-4218-865E-8A50F0094413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37577B68-7209-4218-865E-8A50F0094413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37577B68-7209-4218-865E-8A50F0094413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

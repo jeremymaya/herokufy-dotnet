@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  herokufy:
+    image: ${DOCKER_REGISTRY-}herokufy
+    build:
+      context: .
+      dockerfile: Herokufy/Dockerfile
