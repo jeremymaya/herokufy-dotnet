@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace DotNetPostgresDocker.Migrations
+namespace Herokufy.Migrations
 {
     public partial class initial : Migration
     {
