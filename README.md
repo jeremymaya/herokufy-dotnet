@@ -4,13 +4,13 @@
 
 Author: Kyungrae Kim
 
-Endpoint: <http://tinyplants.herokuapp.com/api/inventory>
+Endpoint: <http://herokufy-dotnet.herokuapp.com>
 
 ---
 
 ## Description
 
-This is a proof of concept that an ASP.NET web application with a relational database can be continuously integrated and deployed to [Heroku](https://www.heroku.com) by combining the power of[Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
+This is a proof of concept that an ASP.NET web application with a relational database can be continuously integrated and deployed to [Heroku](https://www.heroku.com) by combining the power of [Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
 
 [Azure](https://azure.microsoft.com/en-us) is often costly despite being one of the popular options for hosting ASP.NET web applications. This project has swapped the following from Azure to minimize the hosting cost while fully showcasing your project:
 
@@ -63,6 +63,7 @@ You can run PostgreSQL in a development environment using Docker as well. For th
     * EntityFrameworkCore
     * EntityFrameworkCore.Design
     * EntityFrameworkCore.PostgreSQL
+    * Microsoft.EntityFrameworkCore.Tools (to run Migration)
 
 2. Set up a free-tier PostgreSQL database by following the steps in [How to setup a free PostgreSQL database on Heroku](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 3. Add the database URI to GitHub Secrets.
@@ -106,7 +107,7 @@ You can run PostgreSQL in a development environment using Docker as well. For th
     }
     ```
 
-7. Either run migration or update command remotely with the Heroku Postgres connection string.
+7. Run migration command remotely with the Heroku Postgres connection string.
 
     Your deployed web app should now work with Heroku Postgres! 🎉
 
