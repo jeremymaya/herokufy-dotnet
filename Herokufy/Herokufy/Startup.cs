@@ -26,11 +26,11 @@ namespace Herokufy
 
         public IConfiguration Configuration { get; }
 
-        // source: https://n1ghtmare.github.io/2020-09-28/deploying-a-dockerized-aspnet-core-app-using-a-postgresql-db-to-heroku/
-        private string GetHerokuConnectionString()
+        // Source: https://n1ghtmare.github.io/2020-09-28/deploying-a-dockerized-aspnet-core-app-using-a-postgresql-db-to-heroku/
+        private string GetHerokuConnectionString(string connectionString)
         {
             // Get the connection string from the ENV variables
-            string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            string connectionUrl = Environment.GetEnvironmentVariable(connectionString);
 
             // parse the connection string
             var databaseUri = new Uri(connectionUrl);
@@ -46,7 +46,7 @@ namespace Herokufy
         {
             services.AddControllers();
 
-            services.AddDbContext<StoreDbContext>(options => options.UseNpgsql(GetHerokuConnectionString()));
+            services.AddDbContext<StoreDbContext>(options => options.UseNpgsql(GetHerokuConnectionString("DATABASE_URL")));
 
             services.AddTransient<IInventoryManager, InventoryManager>();
         }
