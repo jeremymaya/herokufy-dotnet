@@ -1,12 +1,16 @@
 # herokufy-dotnet
 
-Deployed Website: <http://tinyplants.herokuapp.com/api/inventory>
+![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/workflows/build/badge.svg)
+
+Author: Kyungrae Kim
+
+Endpoint: <http://tinyplants.herokuapp.com/api/inventory>
 
 ---
 
 ## Description
 
-This is a proof of concept that an ASP.NET web application with a relational database can be continously intergrated and  deployed to [Heroku](https://www.heroku.com) by combiniing the power of [Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
+This is a proof of concept that an ASP.NET web application with a relational database can be continuously integrated and  deployed to [Heroku](https://www.heroku.com) by combining the power of [Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
 
 Although [Azure](https://azure.microsoft.com/en-us) is one of the popular options for hosting ASP.NET web applocations, it is often costly. This project has swapped the following from Azure to minimize the hosting cost while fully showcasing your project:
 
@@ -20,14 +24,14 @@ Although [Azure](https://azure.microsoft.com/en-us) is one of the popular option
 
 While Azure offers many great features and easy hosting option for ASP.NET web applications, it is **EXPENSIVE**. With recent Docker support for ASP.NET applications, it is now possible to host the application on Heroku!
 
-Let's set up a continous deployment to Heroku from a GitHub repository using GitHub Actions.
+Let's set up a continuous deployment to Heroku from a GitHub repository using GitHub Actions.
 
 ### Deploying the web app
 
 You can run PostgreSQL in development environment using Docker as well. For the instruction on how to run PostgreSQL locally via Docker, please follow the steps in [Code-401-Async-Inn-API - Using Postgres Instead of SQL Server on Docker](https://github.com/jeremymaya/Code-401-Async-Inn-API).
 
 1. Add `Docker Support` by following the steps in [Create a Multi-Container App with Docker Compose](https://docs.microsoft.com/en-us/visualstudio/mac/docker-multi-container?view=vsmac-2019)
-    * It should be compatiable with Linux
+    * It should be compatible with Linux
 2. Modify the generated `Dockerfile` to work with GitHub Actions and Heroku by following the steps in [Deploying to Heroku from GitHub Actions](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej).
     * **IMPORTANT**: Modify the `workflow.yml` file further by adding  a `cd` command to change the current directory to where `Dockerfile` is located before running Heroku CLI commands
 
