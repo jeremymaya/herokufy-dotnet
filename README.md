@@ -28,8 +28,6 @@ Let's set up a continuous deployment to Heroku from a GitHub repository using Gi
 
 ### Deploying the web app
 
-You can run PostgreSQL in development environment using Docker as well. For the instruction on how to run PostgreSQL locally via Docker, please follow the steps in [Code-401-Async-Inn-API - Using Postgres Instead of SQL Server on Docker](https://github.com/jeremymaya/Code-401-Async-Inn-API).
-
 1. Add `Docker Support` by following the steps in [Create a Multi-Container App with Docker Compose](https://docs.microsoft.com/en-us/visualstudio/mac/docker-multi-container?view=vsmac-2019)
     * It should be compatible with Linux
 2. Modify the generated `Dockerfile` to work with GitHub Actions and Heroku by following the steps in [Deploying to Heroku from GitHub Actions](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej).
@@ -58,6 +56,8 @@ You can run PostgreSQL in development environment using Docker as well. For the 
     After a push and/or pull to the repo depending on your `workflow.yml`, the website should be now live on Heroku! 🎉
 
 ### Deploying the database
+
+You can run PostgreSQL in development environment using Docker as well. For the instruction on how to run PostgreSQL locally via Docker, please follow the steps in [Code-401-Async-Inn-API - Using Postgres Instead of SQL Server on Docker](https://github.com/jeremymaya/Code-401-Async-Inn-API).
 
 1. Make sure your project is using the following packages from Nuget Package Manager:
     * EntityFrameworkCore
