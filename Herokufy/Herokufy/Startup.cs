@@ -37,9 +37,9 @@ namespace Herokufy
         private string GetHerokuConnectionString(string connectionString)
         {
             // Get the connection string from the ENV variables
-            // Modified to bring in connection string from Secrets in Development
+            // Modified to bring in connection string from secrets in Development
             string connectionUrl = WebHostEnvironment.IsDevelopment()
-                ? Configuration["ConnectionString:" + connectionString]
+                ? Configuration["ConnectionStrings:" + connectionString]
                 : Environment.GetEnvironmentVariable(connectionString);
 
             // parse the connection string
@@ -67,7 +67,7 @@ namespace Herokufy
                 {
                     Version = "v1",
                     Title = "Herokufy .NET",
-                    Description = "A proof of concept that an ASP.NET web application with a relational database can be deployed to Heroku",
+                    Description = "A proof of concept that an ASP.NET web application with a relational database can be deployed to Heroku!",
                     Contact = new OpenApiContact
                     {
                         Name = "Kyungrae Kim",

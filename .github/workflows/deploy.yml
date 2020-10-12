@@ -1,7 +1,7 @@
 # Source: https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej
 # Source: https://codeburst.io/deploy-a-containerized-asp-net-core-app-to-heroku-using-github-actions-9e54c72db943
 
-name: build
+name: deploy
 
 on: [push, pull_request]
 

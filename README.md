@@ -1,6 +1,6 @@
 # herokufy-dotnet
 
-![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/workflows/build/badge.svg)
+![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/deploy/build/badge.svg)
 
 Author: Kyungrae Kim
 
@@ -18,6 +18,8 @@ This is a proof of concept that an ASP.NET web application with a relational dat
 * Azure SQL Database => Heroku Postgres
 * Azure Blob Storage (images) => Google Photos
 
+For a more complicated case scenario, please check out [Herokufy More repository](https://github.com/jeremymaya/herokufy-more) that showcases a deployment scenario with two databases and multiple variables.
+
 ---
 
 ## Hosting an ASP.NET application on Heroku
@@ -29,7 +31,7 @@ Let's set up a continuous deployment to Heroku from a GitHub repository using Gi
 ### Deploying the web app
 
 1. Add `Docker Support` by following the steps in [Create a Multi-Container App with Docker Compose](https://docs.microsoft.com/en-us/visualstudio/mac/docker-multi-container?view=vsmac-2019)
-    * It should be compatible with Linux
+    * Your Target OS should should be Linux
 2. Modify the generated `Dockerfile` to work with GitHub Actions and Heroku by following the steps in [Deploying to Heroku from GitHub Actions](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej).
     * **IMPORTANT**: Modify the `workflow.yml` file further by adding  a `cd` command to change the current directory to where `Dockerfile` is located before running Heroku CLI commands
 
@@ -63,7 +65,7 @@ You can run PostgreSQL in a development environment using Docker as well. For th
     * EntityFrameworkCore
     * EntityFrameworkCore.Design
     * EntityFrameworkCore.PostgreSQL
-    * Microsoft.EntityFrameworkCore.Tools (to run Migration)
+    * Microsoft.EntityFrameworkCore.Tools (to run migration and update commands!)
 
 2. Set up a free-tier PostgreSQL database by following the steps in [How to setup a free PostgreSQL database on Heroku](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 3. Add the database URI to GitHub Secrets.
@@ -94,9 +96,11 @@ You can run PostgreSQL in a development environment using Docker as well. For th
 6. Generate a database connection string that will work with the ASP.NET application with the below function taken from [Deploying a Dockerized ASP.NET Core app using a PostgreSQL DB to Heroku](https://n1ghtmare.github.io/2020-09-28/deploying-a-dockerized-aspnet-core-app-using-a-postgresql-db-to-heroku/) - a HUGE thanks to [n1ghtmare](https://github.com/n1ghtmare) for the post!
 
     ```c#
-    private string GetHerokuConnectionString()
+    private string GetHerokuConnectionString(string connectionString)
     {
-        string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+        string connectionUrl = WebHostEnvironment.IsDevelopment()
+            ? Configuration["ConnectionString:" + connectionString]
+            : Environment.GetEnvironmentVariable(connectionString);
 
         var databaseUri = new Uri(connectionUrl);
 
