@@ -18,7 +18,10 @@ This is a proof of concept that an ASP.NET web application with a relational dat
 * Azure SQL Database => Heroku Postgres
 * Azure Blob Storage (images) => Google Photos
 
-For a more complicated case scenario, please check out [Herokufy More repository](https://github.com/jeremymaya/herokufy-more) that showcases a deployment scenario with two databases and multiple variables.
+For a more complicated deployment scenarios, please check out the follwoing projects:
+
+* [Herokufy More](https://github.com/jeremymaya/herokufy-more)
+* [Async Inn API](https://github.com/jeremymaya/Code-401-Async-Inn-API)
 
 ---
 
