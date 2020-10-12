@@ -1,6 +1,6 @@
 # herokufy-dotnet
 
-![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/deploy/build/badge.svg)
+![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/workflows/deploy/badge.svg)
 
 Author: Kyungrae Kim
 
