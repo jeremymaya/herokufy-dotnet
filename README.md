@@ -4,7 +4,7 @@
 
 Author: Kyungrae Kim
 
-Endpoint: <http://herokufy-dotnet.herokuapp.com>
+Endpoint: <https://herokufy-dotnet.herokuapp.com>
 
 ---
 
