@@ -1,5 +1,6 @@
 # herokufy-dotnet
 
+![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/workflows/build/badge.svg)  
 ![Actions Status](https://github.com/jeremymaya/herokufy-dotnet/workflows/deploy/badge.svg)
 
 Author: Kyungrae Kim
@@ -12,6 +13,8 @@ Endpoint: <https://herokufy-dotnet.herokuapp.com>
 
 This is a proof of concept that an ASP.NET web application with a relational database can be continuously integrated and deployed to [Heroku](https://www.heroku.com) by combining the power of [Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
 
+There are many blogs that explain either how to dockerize an ASP.NET web application or how to deploy the app to Heroku. However, all of them fell short of guiding me to deploy a useful ASP.NET web application with databases and environmental variables. This document will fill that gap and go over how to deploy an ASP.NET web application with Heroku Postgres using Docker and GitHub.
+
 [Azure](https://azure.microsoft.com/en-us) is often costly despite being one of the popular options for hosting ASP.NET web applications. This project has swapped the following from Azure to minimize the hosting cost while fully showcasing your project:
 
 * Azure App Services => Heroku
@@ -20,8 +23,9 @@ This is a proof of concept that an ASP.NET web application with a relational dat
 
 For a more complicated deployment scenarios, please check out the follwoing projects:
 
-* [Herokufy More](https://github.com/jeremymaya/herokufy-more)
-* [Async Inn API](https://github.com/jeremymaya/Code-401-Async-Inn-API)
+* [Herokufy More](https://github.com/jeremymaya/herokufy-more) - A further proof of concept involving multiple databases and environmental variables
+* [Async Inn API](https://github.com/jeremymaya/Code-401-Async-Inn-API) - A RESTful API backend featuring assets management and user management
+* [Tiny Plants](https://github.com/jeremymaya/tiny-plants-eCommerce) - An eCommerce website built using ASP.NET Core's MVC and Razor Pages
 
 ---
 
@@ -30,35 +34,6 @@ For a more complicated deployment scenarios, please check out the follwoing proj
 While Azure offers many great features and easy hosting options for ASP.NET web applications, it is **EXPENSIVE**. With recent Docker support for ASP.NET applications, it is now possible to host the application on Heroku!
 
 Let's set up a continuous deployment to Heroku from a GitHub repository using GitHub Actions.
-
-### Deploying the web app
-
-1. Add `Docker Support` by following the steps in [Create a Multi-Container App with Docker Compose](https://docs.microsoft.com/en-us/visualstudio/mac/docker-multi-container?view=vsmac-2019)
-    * Your Target OS should should be Linux
-2. Modify the generated `Dockerfile` to work with GitHub Actions and Heroku by following the steps in [Deploying to Heroku from GitHub Actions](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej).
-    * **IMPORTANT**: Modify the `workflow.yml` file further by adding  a `cd` command to change the current directory to where `Dockerfile` is located before running Heroku CLI commands
-
-    For [example](https://github.com/jeremymaya/herokufy-dotnet/blob/main/.github/workflows/workflow.yml):
-
-    ```yaml
-    cd ./Herokufy/Herokufy
-    ```
-
-    * Do not forget to update the port in `Dockerfile` to `$PORT` by following the steps in [Deploy .Net Core 3.1 Web API to Heroku](https://adevtalks.com/programming/deployment/deploy-net-core-3-1-web-api-to-heroku/).
-    * Do not forget to update the `COPY`, `RUN`, `WORKDIR` as shown in [Deploy .Net Core 3.1 Web API to Heroku](https://adevtalks.com/programming/deployment/deploy-net-core-3-1-web-api-to-heroku/).
-3. Add the following to GitHub Secrets.
-
-    ```text
-    Name: HEROKU_APP_NAME
-    Value: Name of your Heroku application
-
-    Name: HEROKU_API_KEY
-    Value: Token
-    ```
-
-    You can generate the Heroku API key by following the steps in [How should I generate an API key that allows me to use the Heroku Platform API?](https://help.heroku.com/PBGP6IDE/how-should-i-generate-an-api-key-that-allows-me-to-use-the-heroku-platform-api)
-
-    After a push and/or pull to the repo depending on your `workflow.yml`, the website should be now live on Heroku! 🎉
 
 ### Deploying the database
 
@@ -117,6 +92,35 @@ You can run PostgreSQL in a development environment using Docker as well. For th
 7. Run migration command remotely with the Heroku Postgres connection string.
 
     Your deployed web app should now work with Heroku Postgres! 🎉
+
+### Deploying the web app
+
+1. Add `Docker Support` by following the steps in [Create a Multi-Container App with Docker Compose](https://docs.microsoft.com/en-us/visualstudio/mac/docker-multi-container?view=vsmac-2019)
+    * Your Target OS should should be Linux
+2. Modify the generated `Dockerfile` to work with GitHub Actions and Heroku by following the steps in [Deploying to Heroku from GitHub Actions](https://dev.to/heroku/deploying-to-heroku-from-github-actions-29ej).
+    * **IMPORTANT**: Modify the `workflow.yml` file further by adding  a `cd` command to change the current directory to where `Dockerfile` is located before running Heroku CLI commands
+
+    For [example](https://github.com/jeremymaya/herokufy-dotnet/blob/main/.github/workflows/workflow.yml):
+
+    ```yaml
+    cd ./Herokufy/Herokufy
+    ```
+
+    * Do not forget to update the port in `Dockerfile` to `$PORT` by following the steps in [Deploy .Net Core 3.1 Web API to Heroku](https://adevtalks.com/programming/deployment/deploy-net-core-3-1-web-api-to-heroku/).
+    * Do not forget to update the `COPY`, `RUN`, `WORKDIR` as shown in [Deploy .Net Core 3.1 Web API to Heroku](https://adevtalks.com/programming/deployment/deploy-net-core-3-1-web-api-to-heroku/).
+3. Add the following to GitHub Secrets.
+
+    ```text
+    Name: HEROKU_APP_NAME
+    Value: Name of your Heroku application
+
+    Name: HEROKU_API_KEY
+    Value: Token
+    ```
+
+    You can generate the Heroku API key by following the steps in [How should I generate an API key that allows me to use the Heroku Platform API?](https://help.heroku.com/PBGP6IDE/how-should-i-generate-an-api-key-that-allows-me-to-use-the-heroku-platform-api)
+
+    After a push and/or pull to the repo depending on your `workflow.yml`, the website should be now live on Heroku! 🎉
 
 ---
 
