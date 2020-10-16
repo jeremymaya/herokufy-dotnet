@@ -77,7 +77,7 @@ You can run PostgreSQL in a development environment using Docker as well. For th
     private string GetHerokuConnectionString(string connectionString)
     {
         string connectionUrl = WebHostEnvironment.IsDevelopment()
-            ? Configuration["ConnectionString:" + connectionString]
+            ? Configuration["ConnectionStrings:" + connectionString]
             : Environment.GetEnvironmentVariable(connectionString);
 
         var databaseUri = new Uri(connectionUrl);
