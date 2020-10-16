@@ -22,12 +22,12 @@ namespace Herokufy.Controllers
         }
 
         /// <summary>
-        /// Gets a list of amenities
+        /// Gets a list of products
         /// </summary>
-        /// <returns>A list of data transfer object containing amenity information</returns>
-        [HttpGet, Route("GetAmenities")]
+        /// <returns>A list of products from the database</returns>
+        [HttpGet, Route("GetProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAmenities()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _inventory.GetProducts();
         }

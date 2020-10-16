@@ -8,5 +8,6 @@ namespace Herokufy.Models.Interfaces
     public interface IInventoryManager
     {
         Task<List<Product>> GetProducts();
+        Task<Product> CreateProduct(Product product);
     }
 }

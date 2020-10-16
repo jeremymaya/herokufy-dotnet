@@ -17,6 +17,15 @@ namespace Herokufy.Models.Services
             _context = context;
         }
 
+        public async Task<Product> CreateProduct(Product product)
+        {
+            _context.Entry(product).State = EntityState.Added;
+
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
+
         public async Task<List<Product>> GetProducts()
         {
             var products = await _context.Products.ToListAsync();
