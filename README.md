@@ -13,7 +13,7 @@ Endpoint: <https://herokufy-dotnet.herokuapp.com>
 
 This is a proof of concept that an ASP.NET web application with a relational database can be continuously integrated and deployed to [Heroku](https://www.heroku.com) by combining the power of [Docker](https://www.docker.com) and [GitHub Actions](https://github.com/features/actions).
 
-There are many blogs that explain either how to dockerize an ASP.NET web application or how to deploy the app to Heroku. However, all of them fell short of guiding me to deploy a useful ASP.NET web application with databases and environmental variables. This document will fill that gap and go over how to deploy an ASP.NET web application with Heroku Postgres using Docker and GitHub.
+There are many blogs that explain either how to dockerize an ASP.NET web application or how to deploy the app to Heroku. However, all of them fell short of guiding me to deploy a useful ASP.NET web application with databases and environment variables. This document will fill that gap and go over how to deploy an ASP.NET web application with Heroku Postgres using Docker and GitHub.
 
 [Azure](https://azure.microsoft.com/en-us) is often costly despite being one of the popular options for hosting ASP.NET web applications. This project has swapped the following from Azure to minimize the hosting cost while fully showcasing your project:
 
@@ -23,7 +23,7 @@ There are many blogs that explain either how to dockerize an ASP.NET web applica
 
 For a more complicated deployment scenarios, please check out the follwoing projects:
 
-* [Herokufy More](https://github.com/jeremymaya/herokufy-more) - A further proof of concept involving multiple databases and environmental variables
+* [Herokufy More](https://github.com/jeremymaya/herokufy-more) - A further proof of concept involving multiple databases and environment variables
 * [Async Inn API](https://github.com/jeremymaya/Code-401-Async-Inn-API) - A RESTful API backend featuring assets management and user management
 * [Tiny Plants](https://github.com/jeremymaya/tiny-plants-eCommerce) - An eCommerce website built using ASP.NET Core's MVC and Razor Pages
 
